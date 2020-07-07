@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+</head>
+<body>
+    <script>
+        var event = (function() {
+            let eventObj = {};
+
+            return {
+                on: function(type, handler) {
+                    (eventObj[type] || (eventObj[type] = [])).push(handler);
+                },
+
+                off: function(type, handler) {
+                    const len = arguments.length;
+                    let _events = eventObj[type];
+                    if (!_events) return;
+
+                    if (!len) {
+                        eventObj = {};
+                    } else if (len === 1) {
+                        eventObj[type] = [];
+                    } else if (len === 2) {
+                        for (let i = _events - 1; i >= 0; i--) {
+                            _events[i] === handler && _events.splice(i, 1);
+                        }
+                    }
+                },
+
+                emit: function(type) {
+                    let _events = eventObj[type];
+                    if (!_events) return;
+                    const params = Array.prototype.slice.call(arguments, 1);
+                    for (let i = 0; i < _events.length; i++) {
+                        _events[i].apply(null, params);
+                    }
+                },
+            };
+        })();
+    </script>
+    <script>
+        function f1() {
+            console.log(1);
+        }
+        function f2() {
+            console.log(2);
+        }
+        function f3() {
+            console.log(3);
+        }
+
+        event.on('click', f1);
+        event.on('dbclick', f2);
+        event.on('click', f3);
+
+        event.emit('click')
+
+    </script>
+</body>
+</html>

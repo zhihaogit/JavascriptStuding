@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TEST ECHARTS</title>
+    <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.js"></script>
+</head>
+<body>
+    <div
+        id="main"
+        style="width: 600px;height: 400px;"
+    ></div>
+    <script type="text/javascript">
+        const myChart = echarts.init(document.getElementById('main'));
+        
+        let option = {
+            backgroundColor: '#2c343c',
+            // textStyle: {
+            //     color: 'rgba(255, 255, 255, .3)'
+            // },
+            visualMap: {
+                show: false,
+                min: 80,
+                max: 600,
+                inRange: {
+                    colorLightness: [0, 1]
+                }
+            },
+            series: [
+                {
+                    name: 'from',
+                    type: 'pie',
+                    radius: '55%',
+                    data: [
+                        {
+                            name: 'A',
+                            value: 723,
+                        },
+                        {
+                            name: 'B',
+                            value: 923,
+                        },
+                        {
+                            name: 'C',
+                            value: 423,
+                        },
+                        {
+                            name: 'D',
+                            value: 223,
+                        },
+                        {
+                            name: 'E',
+                            value: 323,
+                        },
+                        {
+                            name: 'F',
+                            value: 823,
+                        },
+                    ],
+                    roseType: 'angle',
+                    label: {
+                        normal: {
+                            textStyle: {
+                                color: 'rgba(255, 255, 255, 0.3)'
+                            }  
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            lineStyle: {
+                                color: 'rgba(255, 255, 255, 0.3)'
+                            }
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            // 设置扇形的颜色
+                            // color: '#c23531',
+                            // 阴影的大小
+                            shadowBlur: 200,
+                            // 阴影水平方向上的偏移量
+                            shadowOffsetX: 0,
+                            // 阴影垂直方向上的偏移量
+                            shadowOffsetY: 0,
+                            // 阴影颜色
+                            shadowColor: 'rgba(0, 0, 0, 0.5)',
+                            // 高亮样式
+                            emphasis: {
+                                shadowBlur: 200,
+                                shadowColor: 'rgba(0, 0, 0, .5)'
+                            }  
+                        }
+                    },
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

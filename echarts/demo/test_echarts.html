@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TEST ECHARTS</title>
+    <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.common.js"></script>
+</head>
+<body>
+    <div
+        id="main"
+        style="width: 600px;height: 400px;"
+    ></div>
+    <script type="text/javascript">
+        const myChart = echarts.init(document.getElementById('main'));
+        
+        let option = {
+            title: {
+                text: 'Echarts Demo'
+            },
+            tooltip: {},
+            legend: {
+                data: ['count']
+            },
+            xAxis: {
+                data: ['goods1', 'goods2', 'goods3', 'goods4', 'goods5', 'goods6']
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: 'count',
+                    type: 'bar',
+                    data: [12, 34, 54, 66, 77, 12]
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

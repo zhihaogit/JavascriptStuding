@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TEST ECHARTS</title>
+    <script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts-en.min.js"></script>
+</head>
+<body>
+    <div
+        id="main"
+        style="width: 600px;height: 400px;"
+    ></div>
+    <script type="text/javascript">
+        const myChart = echarts.init(document.getElementById('main'));
+        
+        let option = {
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line'
+            }]
+        };
+
+        myChart.setOption(option);
+
+        myChart.on('mouseover', function (params) {
+            console.log(params);
+        })
+    </script>
+</body>
+</html>
